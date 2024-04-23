@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% block body %}
+<h1 class="text-center">Filter the Data Using Political Party </h1><br>
+
+ <form method="POST" action="/parties" class="my-4">
+    <div class="mb-3 bloc">
+      <label for="exampleInputEmail1" class="form-label fs-1 text-center">Enter Political Party Name</label>
+      <input type="text" name="party" placeholder="EX. BHARATIYA JANATA PARTY" style="text-transform: uppercase;" class="w">
+      <button type="submit" class="btn btn-primary w">Submit</button>
+    </div>  
+    
+  </form> 
+  <table class="table" style="background-color: inherit;">
+    <thead>
+      <tr>
+        <th scope="col">Company Name</th>
+        <th scope="col"> Number Of Bonds</th>
+         <th scope="col"> Total Value Of Bonds </th>
+      </tr>
+    </thead>
+    <tbody>
+      {% if party_name %}
+            {% for row in party_name %}
+              <tr>
+                <td>{{row[0]}}</td>
+                <td>{{row[1]}}</td>
+                <td>{{row[2]}}</td>
+              </tr>
+            {% endfor %}
+      {% endif %}
+    </tbody>
+  </table>
+
+  <h1 class="text-center">Find Which Companies have donated</h1><br>
+
+<form method="POST" action="/parties" class="my-4">
+    <div class="mb-3 bloc">
+      <label for="exampleInputEmail1" class="form-label fs-1 text-center">Enter Political Party Name</label>
+      <input type="text" name="party_company" placeholder="EX. BHARATIYA JANATA PARTY" style="text-transform: uppercase;" class="w">
+      <button type="submit" class="btn btn-primary w">Submit</button>
+    </div>  
+    
+  </form>
+  <table class="table" style="background-color: inherit;">
+    <thead>
+      <tr>
+        <th scope="col">Company Name</th>
+        <th scope="col"> Total Value Recieved</th>
+        <!-- <th scope="col"> Total Value Of Bonds </th> -->
+      </tr>
+    </thead>
+    <tbody>
+      {% if parties_name %}
+            {% for row in parties_name %}
+              <tr>
+                <td>{{row[0]}}</td>
+                <td>{{row[1]}}</td>
+                <!-- <td>{{row[2]}}</td> -->
+              </tr>
+            {% endfor %}
+      {% endif %}
+    </tbody>
+  </table>
+  <script>
+    // Clear form data after page reload
+    if (window.history.replaceState) {
+        window.history.replaceState(null, null, window.location.href);
+    }
+</script>
+
+{% endblock body %}

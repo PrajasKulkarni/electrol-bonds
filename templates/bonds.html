@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block body %}
+      <h1 class="text-center my-3">Filter the Data Using Bond Number</h1><br><br>
+
+    <form method="POST" action="/bonds" class="my-4">
+        <div class="mb-3 bloc">
+          <label for="exampleInputEmail1" class="form-label fs-1 text-center">Enter Bond Number</label>
+          <input type="text" name="box" id="nam" placeholder="Ex 1118" class="w">
+          <button type="submit" id="a_1" class="btn btn-primary w">Submit</button>
+        </div>  
+        
+      </form>
+      <table class="table" style="background-color: inherit;">
+        <thead>
+          <tr>
+            <th scope="col">Sr no.</th>
+            <th scope="col">Date of Encashment</th>
+            <th scope="col"> Name of the Political Party</th>
+            <th scope="col">Account no. of Political Party</th>
+            <th scope="col">Prefix</th>
+            <th scope="col">Bond Number</th>
+            <th scope="col">Denominations</th>
+            <th scope="col">Pay Branch Code</th>
+            <th scope="col">Pay Teller</th>
+            <!-- <th scope="col">Issue Branch Code</th>
+            <th scope="col">Issue Teller</th>
+            <th scope="col">Paid</th> -->
+          </tr>
+        </thead>
+        <tbody>
+          {% if records %}
+                {% for row in records %}
+                  <tr>
+                    <td>{{row[0]}}</td>
+                    <td>{{row[1]}}</td>
+                    <td>{{row[2]}}</td>
+                    <td>{{row[3]}}</td>
+                    <td>{{row[4]}}</td>
+                    <td>{{row[5]}}</td>
+                    <td>{{row[6]}}</td>
+                    <td>{{row[7]}}</td>
+                    <td>{{row[8]}}</td>
+                  </tr>
+                {% endfor %}
+          {% endif %}
+        </tbody>
+      </table>
+      <script>
+        // Clear form data after page reload
+        if (window.history.replaceState) {
+            window.history.replaceState(null, null, window.location.href);
+        }
+    </script>
+
+
+
+
+
+
+
+{% endblock body %}
