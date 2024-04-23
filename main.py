@@ -20,7 +20,7 @@ def bonds():
         records = request.form
         bond = records['box']
         cur = mysql.connection.cursor()
-        sql_query = "select * from file2 where Bond_Number =  %s"
+        sql_query = "select * from file2 join file1 on file2.Bond_Number = file1.Bond_Number where file1.Bond_Number =  %s"
         cur.execute(sql_query, (bond, ))
         mysql.connection.commit()
         record = cur.fetchall()
@@ -76,3 +76,9 @@ def parties():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+
+
+
+
+"select * from file2 join file1 on file2.Bond_Number = file1.Bond_Number where file1.`Name of the Purchaser` = %s GROUP BY file2.`Name of the Political Party`"
