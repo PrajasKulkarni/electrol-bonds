@@ -24,7 +24,7 @@
               <tr>
                 <td>{{row[0]}}</td>
                 <td>{{row[1]}}</td>
-                <td>{{row[2]}}</td>
+                <td>60605000000</td>
               </tr>
             {% endfor %}
       {% endif %}
@@ -45,7 +45,7 @@
     <thead>
       <tr>
         <th scope="col">Company Name</th>
-        <th scope="col"> Total Value Recieved</th>
+        <th scope="col"> Total Value Recieved in crores</th>
         <!-- <th scope="col"> Total Value Of Bonds </th> -->
       </tr>
     </thead>
@@ -61,6 +61,34 @@
       {% endif %}
     </tbody>
   </table>
+  <div>
+    <canvas id="myChart"></canvas>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    const ctx = document.getElementById('myChart');
+    
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ["UTKAL ALUMINA INTERNATIONAL LIMITED" , "QUALITY MAINTENANCE VENTURE LTD" ,  "BHARTI AIRTEL LIMITEDAIRTEL CURRE NT AC-GCO" ,  "M/SGAURAV INTERNATIONAL",  "RICHA & CO",  "SARITA HANDA EXPORTS PVT LTD",  "JNS INSTRUMENTS LTD",  "JANAM ENTERPRISES"],
+        datasets: [{
+          label: 'Value Donated In Crores',
+          data: [2,50,10,10,50,30,5,1],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  </script>
+
   <script>
     // Clear form data after page reload
     if (window.history.replaceState) {
